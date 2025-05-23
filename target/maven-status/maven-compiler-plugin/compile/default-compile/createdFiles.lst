@@ -1,0 +1,6 @@
+model\Wine.class
+service\ProductService.class
+app\SuperDuperMarktApp.class
+model\Cheese.class
+model\Product.class
+model\GeneralProduct.class
