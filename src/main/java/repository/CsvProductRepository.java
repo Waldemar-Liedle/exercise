@@ -1,10 +1,10 @@
 package repository;
 
 import model.*;
+import factory.ProductFactory;
 import com.opencsv.CSVReader;
 
 import java.io.FileReader;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,25 +30,7 @@ public class CsvProductRepository implements ProductRepository {
                 double basePrice = Double.parseDouble(line[4]);
                 String stichtagStr = line.length > 5 ? line[5] : null;
 
-                switch (type.toLowerCase()) {
-                    case "cheese" -> {
-                        LocalDate expiry = LocalDate.parse(expiryStr);
-                        products.add(new Cheese(name, quality, expiry, basePrice));
-                    }
-                    case "wine" -> {
-                        LocalDate stichtag = LocalDate.parse(stichtagStr);
-                        products.add(new Wine(name, quality, stichtag, basePrice));
-                    }
-                    case "general" -> {
-                        LocalDate expiry = LocalDate.parse(expiryStr);
-                        products.add(new GeneralProduct(name, quality, expiry, basePrice));
-                    }
-                    case "flower" -> {
-                        LocalDate expiry = LocalDate.parse(expiryStr);
-                        products.add(new Flower(name, quality, expiry, basePrice));
-                    }
-                    default -> System.err.println("Unbekannter Produkttyp: " + type);
-                }
+                products.add(ProductFactory.createProduct(type, name, quality, expiryStr, basePrice, stichtagStr));
             }
         } catch (Exception e) {
             System.err.println("Fehler beim Laden der CSV: " + e.getMessage());
