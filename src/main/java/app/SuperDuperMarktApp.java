@@ -22,18 +22,27 @@ public class SuperDuperMarktApp {
         List<Product> products = createInitialProducts();
         ProductService service = new ProductService(products);
         service.simulateDays(20);
-        */
+
 
         // csv
-        /*
+
         ProductRepository repo = new CsvProductRepository("src/main/resources/produkte.csv");
         List<Product> products = repo.loadProducts();
         ProductService service = new ProductService(products);
         service.simulateDays(20);
-        */
         
         ProductRepository repo = new SqlProductRepository();
         List<Product> products = repo.loadProducts();
+        */
+
+        String source = System.getProperty("source", "csv").toLowerCase();
+        ProductRepository repo;
+
+        if (source.equals("sql")) {
+            repo = new SqlProductRepository();
+        } else {
+            repo = new CsvProductRepository("src/main/resources/produkte.csv");
+        }
     }
 
     private static List<Product> createInitialProducts() {
