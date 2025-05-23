@@ -6,6 +6,7 @@ import model.Product;
 import model.Wine;
 import repository.CsvProductRepository;
 import repository.ProductRepository;
+import repository.SqlProductRepository;
 import service.ProductService;
 
 import java.time.LocalDate;
@@ -24,10 +25,15 @@ public class SuperDuperMarktApp {
         */
 
         // csv
+        /*
         ProductRepository repo = new CsvProductRepository("src/main/resources/produkte.csv");
         List<Product> products = repo.loadProducts();
         ProductService service = new ProductService(products);
         service.simulateDays(20);
+        */
+        
+        ProductRepository repo = new SqlProductRepository();
+        List<Product> products = repo.loadProducts();
     }
 
     private static List<Product> createInitialProducts() {
