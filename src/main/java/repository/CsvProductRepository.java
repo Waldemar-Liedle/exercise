@@ -39,6 +39,10 @@ public class CsvProductRepository implements ProductRepository {
                         products.add(new Wine(name, quality, stichtag, basePrice));
                     }
                     case "general" -> {
+                    case "flower" -> {
+                        LocalDate expiry = LocalDate.parse(expiryStr);
+                        products.add(new Flower(name, quality, expiry, basePrice));
+                    }
                         LocalDate expiry = LocalDate.parse(expiryStr);
                         products.add(new GeneralProduct(name, quality, expiry, basePrice));
                     }
