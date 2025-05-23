@@ -1,0 +1,5 @@
+type,name,quality,expiryDate,basePrice,stichtag
+cheese,Gouda,35,2025-07-15,4.20,
+wine,Chateau SuperDuper,20,,15.00,2025-06-01
+general,Apfel,50,2025-06-10,1.50,
+cheese,Brie,32,2025-07-01,5.10,

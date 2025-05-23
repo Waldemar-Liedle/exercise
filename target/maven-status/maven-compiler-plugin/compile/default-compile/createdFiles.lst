@@ -1,6 +1,8 @@
 model\Wine.class
+repository\ProductRepository.class
+model\Product.class
+repository\CsvProductRepository.class
 service\ProductService.class
 app\SuperDuperMarktApp.class
 model\Cheese.class
-model\Product.class
 model\GeneralProduct.class
