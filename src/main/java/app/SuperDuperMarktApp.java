@@ -16,24 +16,8 @@ import java.util.List;
 public class SuperDuperMarktApp {
 
     public static void main(String[] args) {
-        
         // inline
-        /*
-        List<Product> products = createInitialProducts();
-        ProductService service = new ProductService(products);
-        service.simulateDays(20);
-
-
-        // csv
-
-        ProductRepository repo = new CsvProductRepository("src/main/resources/produkte.csv");
-        List<Product> products = repo.loadProducts();
-        ProductService service = new ProductService(products);
-        service.simulateDays(20);
-        
-        ProductRepository repo = new SqlProductRepository();
-        List<Product> products = repo.loadProducts();
-        */
+        // List<Product> products = createInitialProducts();
 
         String source = System.getProperty("source", "csv").toLowerCase();
         ProductRepository repo;
@@ -43,6 +27,10 @@ public class SuperDuperMarktApp {
         } else {
             repo = new CsvProductRepository("src/main/resources/produkte.csv");
         }
+
+        List<Product> products = repo.loadProducts();
+        ProductService service = new ProductService(products);
+        service.simulateDays(20);
     }
 
     private static List<Product> createInitialProducts() {
